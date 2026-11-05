@@ -1,19 +1,25 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit & Pooja Wedding Celebration | Bhagat Family</title>
+    <title>Mohit & Pooja | Wedding Invitation</title>
+
+    <!-- Open Graph for Social / WhatsApp sharing -->
+    <meta property="og:title" content="Wedding Invitation | Mohit & Pooja">
+    <meta property="og:description" content="With the divine blessings of Almighty, the Bhagat Family cordially invites you to celebrate the wedding celebrations of Mohit & Pooja on 24th & 27th November.">
+    <meta property="og:image" content="1000123195.png">
+    <meta property="og:type" content="website">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Cormorant Garamond, Playfair Display, Great Vibes, Montserrat -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Marcellus&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -21,34 +27,44 @@
       theme: {
         extend: {
           colors: {
-            ivory: {
-              50: '#FFFEFA',
-              100: '#FAF7F2',
-              200: '#F5EFE6',
-              300: '#EADECE',
-            },
-            gold: {
-              300: '#F3E5AB',
-              400: '#E2C275',
-              500: '#C5A059',
-              600: '#A47E3B',
-              700: '#7E5F27',
-            },
-            royal: {
-              800: '#5A1622',
-              900: '#3D0E16',
-              950: '#26070E',
+            pearl: {
+              50: '#FFFEFC',
+              100: '#FFFDF9',
+              200: '#FAF3F0',
+              300: '#F5EAE6',
             },
             blush: {
-              100: '#FDF2F4',
-              200: '#FCE7EB',
-              300: '#F7CBD2',
-              500: '#E297A5',
-              800: '#8A3B4E',
+              100: '#FBECEE',
+              200: '#F6D7DC',
+              300: '#EABAC3',
+              400: '#D694A2',
+            },
+            dusty: {
+              500: '#A45D6E',
+              600: '#8E4D5E',
+              700: '#7A3848',
+              800: '#5E2533',
+              900: '#461522',
+              950: '#2E0914',
+            },
+            rosegold: {
+              200: '#F8E7DE',
+              300: '#EED0C0',
+              400: '#DEB29B',
+              500: '#C88D66',
+              600: '#B5744B',
+              700: '#94552E',
+            },
+            sage: {
+              100: '#EEF4EF',
+              200: '#D5E4D8',
+              400: '#8FAFA3',
+              600: '#5C7C6D',
+              800: '#3A5247',
             }
           },
           fontFamily: {
-            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            serif: ['"Marcellus"', 'Georgia', 'serif'],
             cormorant: ['"Cormorant Garamond"', 'serif'],
             script: ['"Great Vibes"', 'cursive'],
             sans: ['Montserrat', 'sans-serif'],
@@ -59,663 +75,620 @@
     </script>
 
     <style>
-        /* Subtle luxury card borders and typography gradients */
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #A47E3B 0%, #C5A059 40%, #E2C275 80%, #9B742F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* 3D Envelope Perspective & Transitions */
+        .perspective-1200 {
+            perspective: 1200px;
         }
 
-        .gold-gradient-bg {
-            background: linear-gradient(135deg, #C5A059 0%, #E2C275 50%, #A47E3B 100%);
+        .preserve-3d {
+            transform-style: preserve-3d;
         }
 
-        .gold-frame {
-            border: 1px solid rgba(197, 160, 89, 0.45);
-            box-shadow: 0 10px 30px -10px rgba(197, 160, 89, 0.18);
+        /* Flap styling with triangular borders */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 210px solid transparent;
+            border-right: 210px solid transparent;
+            border-top: 150px solid #753746;
+            transform-origin: top center;
+            transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 20;
+            filter: drop-shadow(0 6px 14px rgba(66, 17, 28, 0.45));
         }
 
-        .gold-double-border {
+        @media (max-width: 480px) {
+            .envelope-flap {
+                border-left-width: 44vw;
+                border-right-width: 44vw;
+                border-top-width: 130px;
+            }
+        }
+
+        .envelope-box.is-open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 5;
+        }
+
+        /* Rose-Gold Wax Seal Pulse */
+        @keyframes roseGoldPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(200, 141, 102, 0.6), 0 8px 25px rgba(50, 14, 23, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 0 16px rgba(200, 141, 102, 0), 0 8px 25px rgba(50, 14, 23, 0.6);
+            }
+        }
+
+        .seal-pulse {
+            animation: roseGoldPulse 2.4s infinite ease-in-out;
+        }
+
+        /* Rose-Gold Frame & Borders */
+        .rose-frame {
+            border: 1px solid rgba(200, 141, 102, 0.45);
+            box-shadow: 0 14px 35px -10px rgba(164, 93, 110, 0.12), 0 0 0 1px rgba(238, 208, 192, 0.35);
+        }
+
+        .rose-double-border {
             position: relative;
         }
 
-            .gold-double-border::before {
+            .rose-double-border::before {
                 content: '';
                 position: absolute;
                 inset: -6px;
-                border: 1px solid rgba(197, 160, 89, 0.35);
+                border: 1px dashed rgba(200, 141, 102, 0.5);
                 border-radius: inherit;
                 pointer-events: none;
             }
 
-        .ornament-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-            .ornament-line::before, .ornament-line::after {
-                content: '';
-                flex: 1;
-                border-bottom: 1px solid rgba(197, 160, 89, 0.4);
-                margin: 0 1.2rem;
-            }
-
-        @keyframes floatPetal {
-            0% {
-                transform: translateY(-5vh) rotate(0deg) translateX(0);
-                opacity: 0.9;
-            }
-
-            100% {
-                transform: translateY(105vh) rotate(360deg) translateX(40px);
-                opacity: 0;
-            }
-        }
-
-        .petal {
-            position: fixed;
-            pointer-events: none;
-            z-index: 40;
-            animation: floatPetal linear infinite;
-        }
-
-        .hero-mask {
-            background: linear-gradient(180deg, rgba(38,7,14,0.45) 0%, rgba(38,7,14,0.7) 60%, rgba(38,7,14,0.92) 100%);
+        /* Subtle background floral watermark pattern */
+        .bg-blush-pattern {
+            background-color: #FFFDF9;
+            background-image: radial-gradient(#F6D7DC 0.75px, transparent 0.75px), radial-gradient(#FAF3F0 0.75px, #FFFDF9 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
     </style>
 </head>
-<body class="bg-ivory-100 text-stone-800 font-sans antialiased overflow-x-hidden selection:bg-gold-400 selection:text-royal-950">
+<body class="bg-blush-pattern text-stone-800 font-sans antialiased overflow-x-hidden selection:bg-dusty-600 selection:text-white">
 
-    <!-- Floating Falling Petals -->
-    <div id="petal-container" class="fixed inset-0 pointer-events-none z-30 overflow-hidden"></div>
+    <!-- ============================================================
+         CANVAS: FLOATING PASTEL ROSE PETALS & BOKEH PARTICLES
+    ============================================================ -->
+    <canvas id="petalsCanvas" class="fixed inset-0 pointer-events-none z-30"></canvas>
 
-    <!-- Music Ambience Toggle Button -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button id="musicToggleBtn" onclick="toggleAudio()" class="flex items-center space-x-2.5 bg-white/95 hover:bg-white text-royal-900 border border-gold-500/60 rounded-full px-4 py-2.5 shadow-2xl backdrop-blur-md transition-all duration-300 transform hover:scale-105 active:scale-95 group">
-            <div class="w-7 h-7 rounded-full bg-gold-500/15 flex items-center justify-center text-gold-600">
-                <i id="musicIcon" class="fa-solid fa-volume-xmark transition-transform group-hover:scale-110"></i>
+    <!-- ============================================================
+         3D DUSTY ROSE ENVELOPE INTRO OVERLAY (OPTION 2)
+    ============================================================ -->
+    <div id="envelopeScreen" class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_#7A3848_0%,_#3E121E_100%)] z-50 flex flex-col items-center justify-center p-4 transition-all duration-1000">
+        <div id="envelopeWrapper" class="relative w-full max-w-[420px] h-[280px] sm:h-[300px] perspective-1200">
+
+            <div id="envelopeBox" class="envelope-box relative w-full h-full bg-dusty-700 border-2 border-rosegold-400 rounded-xl shadow-2xl preserve-3d flex items-center justify-center">
+                <!-- Top Triangular Flap -->
+                <div class="envelope-flap"></div>
+
+                <!-- Envelope Interior Letter Preview -->
+                <div id="envelopeLetter" class="absolute inset-x-4 top-4 bottom-4 bg-pearl-100 rounded-lg p-4 border border-rosegold-300 text-center flex flex-col items-center justify-center shadow-inner transition-transform duration-700 pointer-events-none z-10">
+                    <p class="font-cormorant text-dusty-700 text-sm tracking-widest uppercase">॥ श्री गणेशाय नमः ॥</p>
+                    <h2 class="font-script text-3xl sm:text-4xl text-dusty-800 my-1">Mohit & Pooja</h2>
+                    <p class="text-[11px] uppercase tracking-widest text-rosegold-700 font-medium">Vivah • Nov 24, 2026</p>
+                </div>
+
+                <!-- Envelope Front Facing Pocket Cover -->
+                <div class="absolute inset-0 bg-gradient-to-br from-dusty-600 to-dusty-800 rounded-xl p-6 flex flex-col items-center justify-center text-center z-15 border border-rosegold-400/60 shadow-lg">
+                    <div class="absolute inset-2.5 border border-dashed border-rosegold-300/50 rounded-lg pointer-events-none"></div>
+
+                    <span class="font-cormorant text-rosegold-200 text-sm tracking-[0.25em] uppercase font-semibold">॥ श्री गणेशाय नमः ॥</span>
+                    <span class="text-[10px] sm:text-xs tracking-[0.25em] text-blush-200 uppercase mt-2">Wedding Invitation</span>
+                    <h1 class="font-script text-4xl sm:text-5xl text-pearl-50 my-1 drop-shadow">Mohit &amp; Pooja</h1>
+                    <p class="font-cormorant italic text-rosegold-200 text-sm tracking-wider">Together with the Bhagat Family</p>
+                </div>
+
+                <!-- Rose-Gold Wax Seal Trigger -->
+                <button id="waxSealBtn" onclick="openEnvelope()" title="Click to open the wedding invitation" class="wax-seal seal-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[radial-gradient(circle_at_35%_35%,_#F8E7DE,_#D8A47F,_#94552E)] border-2 border-rosegold-200 text-dusty-950 flex flex-col items-center justify-center font-serif font-bold text-sm sm:text-base tracking-wider z-30 transition-transform duration-300 hover:scale-110 active:scale-95 shadow-2xl cursor-pointer">
+                    <span class="leading-tight">M &amp; P</span>
+                    <span class="text-[9px] font-sans uppercase font-medium tracking-tighter opacity-80">Open</span>
+                </button>
             </div>
-            <span id="musicText" class="text-xs uppercase tracking-wider font-semibold text-royal-900 pr-1">Music Off</span>
+
+        </div>
+
+        <!-- Tap Hint Message -->
+        <p id="envelopeHint" class="mt-8 text-rosegold-200 text-xs sm:text-sm tracking-widest uppercase flex items-center gap-2 animate-bounce">
+            <i class="fa-solid fa-hand-pointer text-rosegold-300"></i> Tap wax seal to open invitation
+        </p>
+    </div>
+
+    <!-- ============================================================
+         FLOATING CONTROLS: MUSIC & CLOSE ENVELOPE
+    ============================================================ -->
+    <div class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5">
+        <!-- Shehnai / Raga Music Toggle -->
+        <button id="musicBtn" onclick="toggleAudio()" class="w-11 h-11 rounded-full bg-dusty-800/90 text-rosegold-200 border border-rosegold-400 shadow-xl flex items-center justify-center backdrop-blur hover:bg-dusty-700 hover:scale-105 transition-all" title="Toggle Wedding Melody">
+            <i id="musicIcon" class="fa-solid fa-volume-xmark"></i>
+        </button>
+        <!-- Re-seal Envelope -->
+        <button onclick="closeEnvelope()" class="w-11 h-11 rounded-full bg-dusty-800/90 text-rosegold-200 border border-rosegold-400 shadow-xl flex items-center justify-center backdrop-blur hover:bg-dusty-700 hover:scale-105 transition-all" title="Close Envelope & Replay">
+            <i class="fa-solid fa-envelope"></i>
         </button>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed top-6 right-6 z-50 transform translate-y-[-150%] opacity-0 transition-all duration-300 max-w-sm bg-white border border-gold-500 text-royal-950 p-4 rounded-2xl shadow-2xl flex items-center space-x-3">
-        <i id="toastIcon" class="fa-solid fa-circle-check text-gold-600 text-xl"></i>
-        <p id="toastMessage" class="text-xs sm:text-sm font-medium"></p>
-    </div>
+    <!-- ============================================================
+         MAIN INVITATION BODY (PASTEL ROSE & WARM BLUSH)
+    ============================================================ -->
+    <div id="invitationContent" class="opacity-0 transition-opacity duration-1000 min-h-screen">
 
-    <!-- HERO SECTION WITH COUPLE BANNER & INVOCATION -->
-    <section class="relative min-h-[92vh] flex flex-col items-center justify-between text-center overflow-hidden">
-        <!-- Hero Couple Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="1000123195.png"
-                 alt="Mohit and Pooja Wedding"
-                 class="w-full h-full object-cover object-[center_28%] scale-105 transition-transform duration-1000 ease-out filter brightness-90"
-                 onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1920&q=80'" />
-            <div class="absolute inset-0 hero-mask"></div>
-        </div>
+        <!-- HERO SECTION -->
+        <header class="relative min-h-[90vh] flex flex-col items-center justify-center text-center p-6 bg-gradient-to-b from-pearl-50 via-pearl-200 to-blush-100">
 
-        <!-- Top Auspicious Inscription -->
-        <div class="relative z-10 pt-10 px-4">
-            <!-- Auspicious Ganesha Emblem -->
-            <div class="w-14 h-14 mx-auto mb-2 text-gold-400 drop-shadow-md">
-                <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
-                    <path d="M50 15 C45 15 42 20 42 25 C42 30 46 32 48 35 C50 38 48 42 45 44 C40 47 33 46 30 43 C28 41 27 38 27 35 C27 32 25 30 22 30 C19 30 17 32 17 35 C17 44 24 53 34 56 C33 60 30 65 25 68 C22 70 23 74 26 75 C31 76 38 73 42 66 C45 72 50 75 57 75 C66 75 74 68 74 58 C74 46 65 38 58 35 C55 33 55 30 55 25 C55 20 53 15 50 15 Z M50 20 C52 20 53 22 53 25 C53 27 52 29 50 29 C48 29 47 27 47 25 C47 22 48 20 50 20 Z" />
-                </svg>
-            </div>
-            <p class="text-gold-300 font-cormorant tracking-[0.3em] text-sm md:text-base uppercase font-semibold drop-shadow">
-                ॥ श्री गणेशाय नमः ॥
-            </p>
-        </div>
+            <div class="max-w-2xl w-full bg-white/95 rounded-3xl p-8 sm:p-12 rose-frame shadow-2xl relative my-8">
+                <div class="absolute inset-3 border border-rosegold-400/30 rounded-2xl pointer-events-none"></div>
 
-        <!-- Center Couple Names & Save the Date -->
-        <div class="relative z-10 px-4 py-8 max-w-4xl mx-auto flex flex-col items-center">
-            <div class="inline-block px-5 py-1.5 rounded-full border border-gold-400/60 bg-royal-950/50 backdrop-blur-md text-gold-300 text-xs md:text-sm uppercase tracking-[0.25em] mb-4">
-                Save The Date
-            </div>
+                <p class="font-cormorant text-dusty-700 tracking-[0.3em] text-sm md:text-base uppercase font-semibold mb-2">
+                    ॥ श्री गणेशाय नमः ॥
+                </p>
+                <p class="font-cormorant italic text-stone-500 text-base sm:text-lg mb-6">
+                    “Two lives, two hearts, joined together in friendship, united forever in love.”
+                </p>
 
-            <p class="font-cormorant italic text-lg sm:text-xl md:text-2xl text-ivory-200 tracking-wide mb-2 max-w-xl">
-                Together with their loving families
-            </p>
+                <!-- Couple Circular Video Emblem with Rose-Gold Border -->
+                <div class="w-48 h-48 sm:w-56 sm:h-56 mx-auto rounded-full p-1.5 bg-gradient-to-tr from-rosegold-500 via-blush-200 to-dusty-600 shadow-xl mb-6 overflow-hidden">
+                    <video class="w-full h-full object-cover rounded-full"
+                           autoplay
+                           muted
+                           loop
+                           playsinline
+                           poster="1000123195.png">
+                        <source src="bride-solo.mp4" type="video/mp4">
+                        <source src="groom-solo.mp4" type="video/mp4">
+                        <img src="1000123195.png" alt="Mohit & Pooja" class="w-full h-full object-cover rounded-full">
+                    </video>
+                </div>
 
-            <div class="my-3 sm:my-5">
-                <h1 class="font-script text-6xl sm:text-7xl md:text-9xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] leading-tight">
+                <h1 class="font-script text-6xl sm:text-7xl md:text-8xl text-dusty-800 leading-tight">
                     Mohit
                 </h1>
-                <div class="ornament-line my-1 text-gold-400 font-cormorant italic text-2xl md:text-3xl">
-                    <span>&amp;</span>
-                </div>
-                <h1 class="font-script text-6xl sm:text-7xl md:text-9xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] leading-tight">
+                <div class="text-rosegold-600 font-cormorant text-2xl italic my-[-10px]">&amp;</div>
+                <h1 class="font-script text-6xl sm:text-7xl md:text-8xl text-dusty-800 leading-tight">
                     Pooja
                 </h1>
-            </div>
 
-            <!-- Date Banner -->
-            <div class="mt-4 flex items-center gap-3 text-gold-300 font-cormorant text-xl sm:text-2xl md:text-3xl tracking-widest uppercase border-y border-gold-400/40 py-2 px-6">
-                <span>November 24, 2026</span>
-            </div>
-        </div>
-
-        <!-- Bottom Scroll Indicator -->
-        <div class="relative z-10 pb-8">
-            <a href="#about" class="text-ivory-300 hover:text-gold-300 transition duration-300 flex flex-col items-center gap-1.5 text-xs uppercase tracking-widest">
-                <span>Explore Celebrations</span>
-                <i class="fa-solid fa-chevron-down animate-bounce text-sm text-gold-400"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- COUNTDOWN SECTION -->
-    <section class="relative z-20 max-w-4xl mx-auto px-4 -mt-12 mb-16">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 gold-frame shadow-xl text-center">
-            <span class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600 block mb-1">Until We Say "I Do"</span>
-            <h3 class="font-serif text-2xl sm:text-3xl text-royal-950 font-normal mb-6">Counting Down To Forever</h3>
-
-            <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg mx-auto">
-                <div class="bg-ivory-100 border border-gold-500/25 rounded-2xl p-3 sm:p-4 text-center">
-                    <span id="days" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-royal-900">00</span>
-                    <span class="text-[10px] sm:text-xs text-stone-500 uppercase tracking-widest mt-1 block">Days</span>
-                </div>
-                <div class="bg-ivory-100 border border-gold-500/25 rounded-2xl p-3 sm:p-4 text-center">
-                    <span id="hours" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-royal-900">00</span>
-                    <span class="text-[10px] sm:text-xs text-stone-500 uppercase tracking-widest mt-1 block">Hours</span>
-                </div>
-                <div class="bg-ivory-100 border border-gold-500/25 rounded-2xl p-3 sm:p-4 text-center">
-                    <span id="minutes" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-royal-900">00</span>
-                    <span class="text-[10px] sm:text-xs text-stone-500 uppercase tracking-widest mt-1 block">Mins</span>
-                </div>
-                <div class="bg-ivory-100 border border-gold-500/25 rounded-2xl p-3 sm:p-4 text-center">
-                    <span id="seconds" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-royal-900">00</span>
-                    <span class="text-[10px] sm:text-xs text-stone-500 uppercase tracking-widest mt-1 block">Secs</span>
+                <!-- Family Invitation Announcement -->
+                <div class="mt-8 pt-6 border-t border-rosegold-300/40">
+                    <p class="text-xs uppercase tracking-[0.25em] text-sage-600 font-semibold">Cordially invited with love by the</p>
+                    <p class="font-serif text-2xl sm:text-3xl text-dusty-900 font-bold tracking-wide mt-1">Bhagat Family</p>
                 </div>
             </div>
-            <p class="text-xs text-stone-500 mt-5 font-cormorant italic text-base sm:text-lg">
-                "Two lives, two hearts, joined together in friendship, united forever in love."
-            </p>
-        </div>
-    </section>
 
-    <!-- INVITATION FROM THE BHAGAT FAMILY -->
-    <section id="about" class="max-w-3xl mx-auto px-4 py-10 text-center relative z-10 scroll-mt-6">
-        <div class="bg-white rounded-3xl p-8 sm:p-12 gold-frame relative overflow-hidden">
-            <!-- Corner Decorative Floral Motifs -->
-            <div class="absolute top-3 left-4 text-gold-500/40 text-xl font-serif">❦</div>
-            <div class="absolute top-3 right-4 text-gold-500/40 text-xl font-serif">❦</div>
-            <div class="absolute bottom-3 left-4 text-gold-500/40 text-xl font-serif">❦</div>
-            <div class="absolute bottom-3 right-4 text-gold-500/40 text-xl font-serif">❦</div>
+        </header>
 
-            <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-semibold block mb-2">Cordially Invited</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-royal-950 font-normal mb-4">
-                The Bhagat Family
-            </h2>
-            <div class="w-16 h-[1.5px] bg-gold-500 mx-auto mb-6"></div>
+        <!-- COUNTDOWN SECTION -->
+        <section class="bg-gradient-to-r from-dusty-900 via-dusty-800 to-dusty-900 text-white py-12 px-4 text-center border-y border-rosegold-400/40 shadow-inner">
+            <div class="max-w-3xl mx-auto">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-rosegold-300 block mb-2">Auspicious Vivah Countdown</span>
+                <h3 class="font-serif text-2xl sm:text-3xl text-pearl-100 font-normal mb-8">Counting Down To Forever</h3>
 
-            <p class="font-cormorant italic text-xl sm:text-2xl text-stone-700 leading-relaxed max-w-xl mx-auto mb-6">
-                Warmly invites you to celebrate the joyous union and divine wedding celebrations of our beloved
-            </p>
-
-            <div class="font-serif text-2xl sm:text-3xl text-gold-600 font-semibold mb-6 tracking-wide">
-                Mohit <span class="font-script text-3xl sm:text-4xl text-royal-800 font-normal px-1">&amp;</span> Pooja
-            </div>
-
-            <p class="text-sm sm:text-base text-stone-600 leading-relaxed max-w-xl mx-auto font-sans font-light">
-                As they embark on this sacred journey of eternal love and togetherness, your gracious presence, prayers, and heartfelt blessings will be the greatest gift to the couple and our family.
-            </p>
-
-            <div class="mt-8 pt-6 border-t border-gold-500/25">
-                <span class="text-xs tracking-widest uppercase font-semibold text-royal-900 block">
-                    With Love, Warmth &amp; Gratitude
-                </span>
-                <span class="font-cormorant italic text-lg text-gold-700">The Bhagat Family</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- CINEMATIC VIDEO SECTION -->
-    <section class="max-w-4xl mx-auto px-4 py-8 relative z-10">
-        <div class="text-center mb-8">
-            <span class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">A Glimpse of Magic</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-royal-950 mt-1">Our Special Video Moments</h2>
-            <div class="w-16 h-[1.5px] bg-gold-500 mx-auto mt-3"></div>
-            <p class="text-stone-600 text-sm mt-3 font-light">Watch Mohit &amp; Pooja celebrate the beginning of forever</p>
-        </div>
-
-        <!-- Video Selection Switcher -->
-        <div class="flex items-center justify-center gap-3 mb-5">
-            <button id="videoTab1"
-                    onclick="switchVideo('input_file_0.mp4', 1)"
-                    class="px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-royal-900 text-white shadow-md border border-royal-900">
-                <i class="fa-solid fa-film mr-1.5 text-gold-400"></i> Dance of Love
-            </button>
-            <button id="videoTab2"
-                    onclick="switchVideo('input_file_1.mp4', 2)"
-                    class="px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-white text-royal-950 hover:bg-ivory-200 shadow-sm border border-gold-500/40">
-                <i class="fa-solid fa-heart mr-1.5 text-gold-600"></i> Togetherness Moments
-            </button>
-        </div>
-
-        <div class="bg-white rounded-3xl p-3 sm:p-5 gold-frame shadow-2xl relative overflow-hidden group">
-            <div class="relative w-full rounded-2xl overflow-hidden aspect-video bg-black shadow-inner flex items-center justify-center">
-                <!-- Native video player with robust controls, autoplay and cross-browser attributes -->
-                <video id="coupleVideo"
-                       class="w-full h-full object-cover"
-                       controls
-                       playsinline
-                       autoplay
-                       muted
-                       loop
-                       preload="auto"
-                       poster="input_file_2.png">
-                    <source id="videoSrc" src="input_file_0.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-            </div>
-
-            <!-- Quick Playback Helper & Local Video Upload Option -->
-            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 px-2 pt-2 text-xs text-stone-500">
-                <div class="flex items-center gap-2">
-                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span id="videoTitleText" class="font-medium text-stone-700">Playing: Dance of Love</span>
-                </div>
-                <div>
-                    <label for="customVideoFile" class="cursor-pointer text-gold-700 hover:text-gold-900 underline font-medium">
-                        <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Choose another video file
-                    </label>
-                    <input type="file" id="customVideoFile" accept="video/mp4,video/*" class="hidden" onchange="handleCustomVideoUpload(event)">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MEET THE COUPLE WITH AESTHETIC PORTRAITS -->
-    <section class="max-w-5xl mx-auto px-4 py-12 relative z-10">
-        <div class="text-center mb-12">
-            <span class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">The Bride &amp; The Groom</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-royal-950 mt-1">Bound By Love</h2>
-            <div class="w-16 h-[1.5px] bg-gold-500 mx-auto mt-3"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-
-            <!-- Groom Card -->
-            <div class="bg-white rounded-3xl p-6 sm:p-8 gold-frame text-center flex flex-col items-center justify-between group hover:shadow-2xl transition duration-500">
-                <div class="w-full flex flex-col items-center">
-                    <div class="w-48 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden mb-6 gold-double-border shadow-md">
-                        <img src="input_file_3.png"
-                             alt="Mohit - The Groom"
-                             class="w-full h-full object-cover object-[25%_center] group-hover:scale-105 transition duration-700"
-                             onerror="this.src='https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=800&q=80'" />
+                <div class="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg mx-auto">
+                    <div class="bg-white/10 border border-rosegold-300/30 rounded-2xl p-3 sm:p-4 backdrop-blur-sm shadow-md">
+                        <span id="cd-days" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-rosegold-200">00</span>
+                        <span class="text-[10px] sm:text-xs text-blush-200 uppercase tracking-widest mt-1 block">Days</span>
                     </div>
-                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">The Groom</span>
-                    <h3 class="font-serif text-3xl text-royal-950 font-medium mt-1 mb-3">Mohit</h3>
-                    <p class="text-sm text-stone-600 font-light leading-relaxed max-w-sm">
-                        Compassionate, driven, and full of spirited warmth. Mohit is ready to embark on life's sweetest adventure alongside his best friend and soulmate.
-                    </p>
+                    <div class="bg-white/10 border border-rosegold-300/30 rounded-2xl p-3 sm:p-4 backdrop-blur-sm shadow-md">
+                        <span id="cd-hours" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-rosegold-200">00</span>
+                        <span class="text-[10px] sm:text-xs text-blush-200 uppercase tracking-widest mt-1 block">Hours</span>
+                    </div>
+                    <div class="bg-white/10 border border-rosegold-300/30 rounded-2xl p-3 sm:p-4 backdrop-blur-sm shadow-md">
+                        <span id="cd-mins" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-rosegold-200">00</span>
+                        <span class="text-[10px] sm:text-xs text-blush-200 uppercase tracking-widest mt-1 block">Mins</span>
+                    </div>
+                    <div class="bg-white/10 border border-rosegold-300/30 rounded-2xl p-3 sm:p-4 backdrop-blur-sm shadow-md">
+                        <span id="cd-secs" class="block font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-rosegold-200">00</span>
+                        <span class="text-[10px] sm:text-xs text-blush-200 uppercase tracking-widest mt-1 block">Secs</span>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Bride Card (Updated with Pooja's uploaded solo gown picture) -->
-            <div class="bg-white rounded-3xl p-6 sm:p-8 gold-frame text-center flex flex-col items-center justify-between group hover:shadow-2xl transition duration-500">
-                <div class="w-full flex flex-col items-center">
-                    <div class="w-48 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden mb-6 gold-double-border shadow-md">
-                        <img src="input_file_2.png"
-                             alt="Pooja - The Bride"
-                             class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-700"
-                             onerror="this.src='https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80'" />
-                    </div>
-                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">The Bride</span>
-                    <h3 class="font-serif text-3xl text-royal-950 font-medium mt-1 mb-3">Pooja</h3>
-                </div>
-                <div class="mt-6 pt-4 border-t border-gold-500/20 w-full text-xs text-gold-700 tracking-wider font-cormorant italic text-base">
-                    The Cherished Bride
-                </div>
+        <!-- THE HAPPY COUPLE SECTION -->
+        <section class="max-w-5xl mx-auto px-4 py-16">
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-sage-600 block">The Happy Couple</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-dusty-900 mt-1">Bound by Love &amp; Destiny</h2>
+                <div class="w-16 h-0.5 bg-rosegold-500 mx-auto mt-3"></div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- EVENTS SECTION (WEDDING & RECEPTION ONLY) -->
-    <section id="events" class="max-w-4xl mx-auto px-4 py-12 relative z-10">
-        <div class="text-center mb-12">
-            <span class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">Celebration Schedule</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-royal-950 mt-1">Wedding Itinerary</h2>
-            <div class="w-16 h-[1.5px] bg-gold-500 mx-auto mt-3"></div>
-            <p class="text-stone-600 text-sm mt-3 max-w-md mx-auto">
-                Join us in making these cherished milestones memorable
-            </p>
-        </div>
-
-        <div class="space-y-8">
-
-            <!-- EVENT 1: THE WEDDING (24th November) -->
-            <div class="bg-white rounded-3xl p-6 sm:p-10 gold-frame shadow-lg relative overflow-hidden flex flex-col md:flex-row gap-8 items-center">
-                <!-- Event Image Thumbnail -->
-                <div class="w-full md:w-56 h-56 rounded-2xl overflow-hidden flex-shrink-0 gold-double-border shadow-md">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80"
-                         alt="Wedding Mandap Ceremony"
-                         class="w-full h-full object-cover hover:scale-105 transition duration-500"
-                         onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Groom Card (Mohit) -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 rose-frame text-center flex flex-col items-center justify-between group hover:shadow-2xl transition duration-500">
+                    <div class="w-full flex flex-col items-center">
+                        <div class="w-48 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden mb-6 rose-double-border shadow-md bg-stone-900">
+                            <video class="w-full h-full object-cover object-[25%_center] group-hover:scale-105 transition duration-700"
+                                   autoplay
+                                   muted
+                                   loop
+                                   playsinline
+                                   poster="1000123195.png">
+                                <source src="1000123207.mp4" type="video/mp4">
+                                <img src="1000123195.png" alt="Mohit" class="w-full h-full object-cover">
+                            </video>
+                        </div>
+                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-rosegold-600">The Groom</span>
+                        <h3 class="font-serif text-3xl text-dusty-900 font-medium mt-1 mb-2">Mohit</h3>
+                        <p class="text-sm text-stone-600 font-light leading-relaxed max-w-sm">
+                            Compassionate, driven, and full of spirited warmth, ready to begin this wonderful journey of life.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-rosegold-300/30 w-full text-xs text-dusty-700 tracking-wider font-cormorant italic text-base">
+                        Cherished son of the Bhagat Family
+                    </div>
                 </div>
 
-                <!-- Event Details -->
-                <div class="flex-1 w-full text-left">
-                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                        <span class="px-3.5 py-1 rounded-full bg-blush-100 text-royal-900 border border-blush-300 text-xs font-semibold uppercase tracking-wider">
-                            Sacred Matrimony
-                        </span>
-                        <span class="text-xs text-gold-700 font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                            <i class="fa-regular fa-clock"></i> 6:00 PM Onwards
-                        </span>
+                <!-- Bride Card (Pooja - Solo Gown Artwork) -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 rose-frame text-center flex flex-col items-center justify-between group hover:shadow-2xl transition duration-500">
+                    <div class="w-full flex flex-col items-center">
+                        <div class="w-48 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden mb-6 rose-double-border shadow-md bg-stone-900">
+                            <img src="1000123193.png"
+                                 alt="Pooja"
+                                 class="w-full h-full object-cover object-[center_18%] group-hover:scale-105 transition duration-700">
+                        </div>
+                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-rosegold-600">The Bride</span>
+                        <h3 class="font-serif text-3xl text-dusty-900 font-medium mt-1 mb-2">Pooja</h3>
+                        <p class="text-sm text-stone-600 font-light leading-relaxed max-w-sm">
+                            Radiant, graceful, and affectionate, bringing endless warmth and elegance into every shared dream.
+                        </p>
                     </div>
-
-                    <h3 class="font-serif text-3xl text-royal-950 font-semibold mb-2">The Wedding Ceremony</h3>
-                    <div class="text-gold-700 font-serif text-lg font-medium mb-3 flex items-center gap-2">
-                        <i class="fa-regular fa-calendar text-gold-600"></i>
-                        <span>Tuesday, 24th November 2026</span>
+                    <div class="mt-6 pt-4 border-t border-rosegold-300/30 w-full text-xs text-dusty-700 tracking-wider font-cormorant italic text-base">
+                        The Beautiful Bride
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <p class="text-stone-600 text-sm font-light leading-relaxed mb-6">
-                        Under the auspicious sacred mandap, Mohit and Pooja will exchange traditional marital vows, floral garlands, and seven holy rounds around the sacred fire (Saat Phere).
-                    </p>
+        <!-- CINEMATIC VIDEO SECTION -->
+        <section class="max-w-4xl mx-auto px-4 py-8">
+            <div class="text-center mb-8">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-sage-600">Celebration Moments</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-dusty-900 mt-1">Our Dance of Love</h2>
+                <div class="w-16 h-0.5 bg-rosegold-500 mx-auto mt-3"></div>
+            </div>
 
+            <!-- Video Switcher Tabs -->
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <button id="videoBtn1" onclick="switchVideo('1000123207.mp4', 1)" class="px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-dusty-700 text-white shadow-md border border-dusty-700">
+                    <i class="fa-solid fa-play text-rosegold-300 mr-1.5"></i> Clip 1: Pre-Wedding Dance
+                </button>
+                <button id="videoBtn2" onclick="switchVideo('1000123205.mp4', 2)" class="px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-white text-dusty-900 hover:bg-blush-100 shadow-sm border border-rosegold-400">
+                    <i class="fa-solid fa-play text-rosegold-600 mr-1.5"></i> Clip 2: Together Moments
+                </button>
+            </div>
+
+            <!-- Video Player -->
+            <div class="bg-white rounded-3xl p-3 sm:p-5 rose-frame shadow-2xl">
+                <div class="relative w-full rounded-2xl overflow-hidden aspect-video bg-black shadow-inner flex items-center justify-center">
+                    <video id="coupleVideo"
+                           class="w-full h-full object-cover"
+                           controls
+                           playsinline
+                           autoplay
+                           muted
+                           loop
+                           poster="1000123195.png">
+                        <source id="videoSource" src="1000123207.mp4" type="video/mp4">
+                        <source src="1000123205.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUSPICIOUS CEREMONIES (Wedding on 24th Nov & Reception on 27th Nov) -->
+        <section class="max-w-4xl mx-auto px-4 py-16">
+            <div class="text-center mb-12">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-sage-600">Save The Dates</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-dusty-900 mt-1">Auspicious Ceremonies</h2>
+                <div class="w-16 h-0.5 bg-rosegold-500 mx-auto mt-3"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 1. The Wedding Ceremony (24th November) -->
+                <div class="bg-white rounded-3xl p-8 rose-frame text-center flex flex-col justify-between hover:shadow-xl transition">
                     <div>
-                        <button onclick="addToCalendar('Wedding Ceremony of Mohit & Pooja', '20261124T180000', '20261125T010000', 'Auspicious Wedding Ceremony of Mohit and Pooja. Hosted with love by the Bhagat Family.')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-royal-900 hover:bg-royal-800 text-white font-medium text-xs tracking-wider uppercase shadow-md transition duration-300">
-                            <i class="fa-regular fa-calendar-check text-gold-400"></i>
-                            <span>Add to Calendar</span>
+                        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-blush-200 text-dusty-800 mb-4 border border-rosegold-300">
+                            The Sacred Vows
+                        </span>
+                        <h3 class="font-serif text-3xl text-dusty-900 mb-3">Wedding Ceremony</h3>
+                        <div class="flex items-center justify-center gap-2 text-rosegold-700 font-serif text-lg font-bold mb-4">
+                            <i class="fa-regular fa-calendar-check text-dusty-600"></i>
+                            <span>Tuesday, 24th November</span>
+                        </div>
+                        <p class="text-sm text-stone-600 font-light leading-relaxed mb-6 font-cormorant italic text-base">
+                            With the sacred fire as our witness and your hearty blessings around us, we join our lives together in holy matrimony.
+                        </p>
+                    </div>
+                    <div>
+                        <button onclick="addToCalendar('Wedding Ceremony of Mohit & Pooja', '20261124T043000Z', '20261124T183000Z', 'Vivah Sanskar of Mohit and Pooja, warmly hosted by the Bhagat Family.')"
+                                class="w-full py-3 rounded-full bg-dusty-700 hover:bg-dusty-800 text-pearl-50 text-xs font-semibold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 border border-rosegold-400">
+                            <i class="fa-regular fa-calendar-plus"></i>
+                            <span>Add to Google Calendar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. The Grand Reception (27th November) -->
+                <div class="bg-white rounded-3xl p-8 rose-frame text-center flex flex-col justify-between hover:shadow-xl transition">
+                    <div>
+                        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-sage-100 text-sage-800 mb-4 border border-sage-200">
+                            Grand Celebration
+                        </span>
+                        <h3 class="font-serif text-3xl text-dusty-900 mb-3">Wedding Reception</h3>
+                        <div class="flex items-center justify-center gap-2 text-rosegold-700 font-serif text-lg font-bold mb-4">
+                            <i class="fa-regular fa-calendar-check text-dusty-600"></i>
+                            <span>Friday, 27th November</span>
+                        </div>
+                        <p class="text-sm text-stone-600 font-light leading-relaxed mb-6 font-cormorant italic text-base">
+                            Join us for an evening of warmth, dinner, music, and celebration as we rejoice together with our nearest and dearest.
+                        </p>
+                    </div>
+                    <div>
+                        <button onclick="addToCalendar('Wedding Reception of Mohit & Pooja', '20261127T133000Z', '20261127T183000Z', 'Grand Wedding Reception of Mohit and Pooja, hosted with love by the Bhagat Family.')"
+                                class="w-full py-3 rounded-full bg-dusty-700 hover:bg-dusty-800 text-pearl-50 text-xs font-semibold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 border border-rosegold-400">
+                            <i class="fa-regular fa-calendar-plus"></i>
+                            <span>Add to Google Calendar</span>
                         </button>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- EVENT 2: THE RECEPTION (27th November) -->
-            <div class="bg-white rounded-3xl p-6 sm:p-10 gold-frame shadow-lg relative overflow-hidden flex flex-col md:flex-row gap-8 items-center">
-                <!-- Event Image Thumbnail -->
-                <div class="w-full md:w-56 h-56 rounded-2xl overflow-hidden flex-shrink-0 gold-double-border shadow-md">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80"
-                         alt="Wedding Reception Gala"
-                         class="w-full h-full object-cover hover:scale-105 transition duration-500"
-                         onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80'" />
-                </div>
+        <!-- CAPTURED MOMENTS GALLERY -->
+        <section class="max-w-5xl mx-auto px-4 py-12">
+            <div class="text-center mb-10">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-sage-600">Captured Memories</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-dusty-900 mt-1">Moments of Love</h2>
+                <div class="w-16 h-0.5 bg-rosegold-500 mx-auto mt-3"></div>
+            </div>
 
-                <!-- Event Details -->
-                <div class="flex-1 w-full text-left">
-                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                        <span class="px-3.5 py-1 rounded-full bg-gold-300/30 text-royal-900 border border-gold-400/50 text-xs font-semibold uppercase tracking-wider">
-                            Celebration Gala
-                        </span>
-                        <span class="text-xs text-gold-700 font-semibold uppercase tracking-wider flex items-center gap-1.5">
-                            <i class="fa-regular fa-clock"></i> 7:30 PM Onwards
-                        </span>
-                    </div>
-
-                    <h3 class="font-serif text-3xl text-royal-950 font-semibold mb-2">The Grand Reception</h3>
-                    <div class="text-gold-700 font-serif text-lg font-medium mb-3 flex items-center gap-2">
-                        <i class="fa-regular fa-calendar text-gold-600"></i>
-                        <span>Friday, 27th November 2026</span>
-                    </div>
-
-                    <p class="text-stone-600 text-sm font-light leading-relaxed mb-6">
-                        An evening of elegance, congratulations, and celebratory dinner hosted by the Bhagat family to celebrate the newly married couple Mohit and Pooja.
-                    </p>
-
-                    <div>
-                        <button onclick="addToCalendar('Wedding Reception - Mohit & Pooja', '20261127T193000', '20261127T235900', 'Grand Wedding Reception of Mohit and Pooja hosted by the Bhagat Family.')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-royal-900 text-royal-900 hover:bg-royal-900 hover:text-white font-medium text-xs tracking-wider uppercase transition duration-300">
-                            <i class="fa-regular fa-calendar-plus text-gold-600"></i>
-                            <span>Add to Calendar</span>
-                        </button>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Video 1: Couple Dance -->
+                <div class="group relative rounded-2xl overflow-hidden rose-frame aspect-square shadow-md bg-stone-900">
+                    <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                           autoplay
+                           muted
+                           loop
+                           playsinline
+                           poster="1000123195.png">
+                        <source src="1000123207.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dusty-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 pointer-events-none">
+                        <p class="text-white font-serif text-lg">Together Forever</p>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
+                <!-- Gallery Image: Solo Bride Pooja -->
+                <div class="group relative rounded-2xl overflow-hidden rose-frame aspect-square shadow-md bg-stone-900">
+                    <img src="1000123193.png"
+                         alt="Pooja Portrait"
+                         class="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dusty-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 pointer-events-none">
+                        <p class="text-white font-serif text-lg">Radiant Grace</p>
+                    </div>
+                </div>
 
-    <!-- PHOTO GALLERY / MOMENTS SECTION -->
-    <section class="max-w-5xl mx-auto px-4 py-12 relative z-10">
-        <div class="text-center mb-10">
-            <span class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">Captured Memories</span>
-            <h2 class="font-serif text-3xl sm:text-4xl text-royal-950 mt-1">Moments of Love</h2>
-            <div class="w-16 h-[1.5px] bg-gold-500 mx-auto mt-3"></div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <div class="group relative rounded-2xl overflow-hidden gold-frame aspect-square shadow-md">
-                <img src="1000123195.png"
-                     alt="Mohit and Pooja Embraced"
-                     class="w-full h-full object-cover object-top group-hover:scale-110 transition duration-700" />
-                <div class="absolute inset-0 bg-gradient-to-t from-royal-950/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                    <p class="text-white font-serif text-lg">Together Forever</p>
+                <!-- Gallery Video 2: Couple Together -->
+                <div class="group relative rounded-2xl overflow-hidden rose-frame aspect-square shadow-md bg-stone-900">
+                    <video class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                           autoplay
+                           muted
+                           loop
+                           playsinline
+                           poster="1000123195.png">
+                        <source src="1000123205.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dusty-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 pointer-events-none">
+                        <p class="text-white font-serif text-lg">Cherished Smiles</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="group relative rounded-2xl overflow-hidden gold-frame aspect-square shadow-md">
-                <img src="1000123193.png"
-                     alt="Pooja Royal Portrait"
-                     class="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition duration-700" />
-                <div class="absolute inset-0 bg-gradient-to-t from-royal-950/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                    <p class="text-white font-serif text-lg">The Radiant Bride</p>
+        <!-- SHARE INVITATION SECTION -->
+        <section class="max-w-xl mx-auto px-4 py-8 text-center">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 rose-frame">
+                <h4 class="font-serif text-2xl text-dusty-900 mb-2">Share With Family &amp; Friends</h4>
+                <p class="text-xs text-stone-500 mb-6 font-light">Forward this digital invitation to loved ones over WhatsApp or copy the link directly.</p>
+
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <button onclick="shareOnWhatsApp()" class="flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs tracking-wider uppercase transition shadow-md">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Share on WhatsApp</span>
+                    </button>
+                    <button onclick="copyInviteLink()" class="flex items-center gap-2 px-6 py-3 rounded-full border border-rosegold-500 text-dusty-800 hover:bg-blush-100 font-semibold text-xs tracking-wider uppercase transition">
+                        <i class="fa-regular fa-copy text-sm"></i>
+                        <span>Copy Link</span>
+                    </button>
                 </div>
             </div>
+        </section>
 
-            <div class="group relative rounded-2xl overflow-hidden gold-frame aspect-square shadow-md">
-                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80"
-                     alt="Floral Blessings"
-                     class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
-                <div class="absolute inset-0 bg-gradient-to-t from-royal-950/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                    <p class="text-white font-serif text-lg">Floral Blessings</p>
-                </div>
+        <!-- FOOTER -->
+        <footer class="border-t border-rosegold-300/40 py-12 text-center bg-pearl-200 text-stone-700">
+            <div class="max-w-2xl mx-auto px-4 space-y-3">
+                <div class="font-cormorant text-dusty-700 text-base tracking-widest uppercase">॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ ॥</div>
+                <div class="font-script text-5xl text-dusty-800">Mohit &amp; Pooja</div>
+                <p class="text-xs tracking-[0.25em] uppercase font-semibold text-rosegold-700">
+                    Warmly Invited by The Bhagat Family
+                </p>
+                <p class="text-xs text-stone-400 font-serif italic text-base pt-2">
+                    November 2026 • Seeking your prayers, love &amp; blessings
+                </p>
             </div>
+        </footer>
 
-        </div>
-    </section>
+    </div>
 
-    <!-- SHARE INVITATION SECTION -->
-    <section class="max-w-xl mx-auto px-4 py-8 text-center relative z-10">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 gold-frame">
-            <h4 class="font-serif text-2xl text-royal-950 mb-2">Share With Family &amp; Friends</h4>
-            <p class="text-xs text-stone-500 mb-6">Send this digital wedding invitation with loved ones over WhatsApp or copy the link directly.</p>
-
-            <div class="flex flex-wrap items-center justify-center gap-3">
-                <button onclick="shareOnWhatsApp()" class="flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs tracking-wider uppercase transition shadow-md">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Share on WhatsApp</span>
-                </button>
-                <button onclick="copyInviteLink()" class="flex items-center gap-2 px-6 py-3 rounded-full border border-gold-500 text-gold-700 hover:bg-gold-500/10 font-semibold text-xs tracking-wider uppercase transition">
-                    <i class="fa-regular fa-copy text-sm"></i>
-                    <span>Copy Link</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- WARM HOST FOOTER -->
-    <footer class="relative z-10 border-t border-gold-500/30 py-12 text-center bg-white text-stone-700">
-        <div class="max-w-2xl mx-auto px-4 space-y-4">
-            <div class="font-script text-5xl text-royal-900">Mohit &amp; Pooja</div>
-            <p class="text-xs tracking-[0.25em] uppercase font-semibold text-gold-700">
-                Warmly invited by The Bhagat Family
-            </p>
-            <div class="ornament-line max-w-xs mx-auto my-2 text-gold-500">❦</div>
-            <p class="text-xs text-stone-500 font-serif italic text-base">
-                November 2026 • Seeking your gracious prayers &amp; blessings
-            </p>
-        </div>
-    </footer>
-
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- ============================================================
+         SCRIPTS: AUDIO, 3D ENVELOPE, COUNTDOWN & CANVAS
+    ============================================================ -->
     <script>
-    // ----------------------------------------------------
-    // 1. REAL-TIME COUNTDOWN TIMER (24th November 2026, 18:00 IST)
-    // ----------------------------------------------------
-    const weddingDate = new Date("2026-11-24T18:00:00+05:30").getTime();
+    // 1. Envelope Open & Close Handler
+    function openEnvelope() {
+      const box = document.getElementById('envelopeBox');
+      const letter = document.getElementById('envelopeLetter');
+      const screen = document.getElementById('envelopeScreen');
+      const content = document.getElementById('invitationContent');
+      const wax = document.getElementById('waxSealBtn');
 
+      box.classList.add('is-open');
+      wax.style.transform = 'translate(-50%, -50%) scale(1.3)';
+      wax.style.opacity = '0';
+
+      setTimeout(() => {
+        letter.style.transform = 'translateY(-60px)';
+      }, 350);
+
+      setTimeout(() => {
+        screen.style.opacity = '0';
+        screen.style.pointerEvents = 'none';
+        content.classList.remove('opacity-0');
+        content.classList.add('opacity-100');
+        startAudio();
+      }, 950);
+    }
+
+    function closeEnvelope() {
+      const box = document.getElementById('envelopeBox');
+      const letter = document.getElementById('envelopeLetter');
+      const screen = document.getElementById('envelopeScreen');
+      const content = document.getElementById('invitationContent');
+      const wax = document.getElementById('waxSealBtn');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      content.classList.add('opacity-0');
+      content.classList.remove('opacity-100');
+      screen.style.pointerEvents = 'auto';
+      screen.style.opacity = '1';
+
+      setTimeout(() => {
+        letter.style.transform = 'translateY(0)';
+        box.classList.remove('is-open');
+        wax.style.transform = 'translate(-50%, -50%) scale(1)';
+        wax.style.opacity = '1';
+      }, 400);
+    }
+
+    // 2. Video Switcher
+    function switchVideo(videoSrc, tabIdx) {
+      const video = document.getElementById('coupleVideo');
+      const source = document.getElementById('videoSource');
+      const btn1 = document.getElementById('videoBtn1');
+      const btn2 = document.getElementById('videoBtn2');
+
+      video.pause();
+      source.src = videoSrc;
+      video.load();
+      video.play().catch(() => {});
+
+      if (tabIdx === 1) {
+        btn1.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-dusty-700 text-white shadow-md border border-dusty-700";
+        btn2.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-white text-dusty-900 hover:bg-blush-100 shadow-sm border border-rosegold-400";
+      } else {
+        btn2.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-dusty-700 text-white shadow-md border border-dusty-700";
+        btn1.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition bg-white text-dusty-900 hover:bg-blush-100 shadow-sm border border-rosegold-400";
+      }
+    }
+
+    // 3. Countdown Timer (Target: Nov 24, 2026)
+    const weddingDate = new Date("2026-11-24T18:00:00+05:30").getTime();
     function updateCountdown() {
       const now = new Date().getTime();
-      const difference = weddingDate - now;
+      const diff = weddingDate - now;
 
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerText = String(days).padStart(2, '0');
-        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-      } else {
-        document.getElementById("days").innerText = "00";
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
+        document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').innerText = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').innerText = String(secs).padStart(2, '0');
       }
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // ----------------------------------------------------
-    // 2. FALLING ROSE PETALS / SPARKLES
-    // ----------------------------------------------------
-    const petalContainer = document.getElementById('petal-container');
-    const petalSymbols = ['🌸', '✨', '🌺', '🌼', '🤍'];
-
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.className = 'petal select-none';
-      petal.innerText = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
-      petal.style.left = Math.random() * 95 + 'vw';
-      petal.style.animationDuration = (Math.random() * 4 + 7) + 's';
-      petal.style.opacity = Math.random() * 0.7 + 0.3;
-      petal.style.fontSize = (Math.random() * 10 + 12) + 'px';
-
-      petalContainer.appendChild(petal);
-
-      setTimeout(() => {
-        petal.remove();
-      }, 12000);
-    }
-    setInterval(createPetal, 950);
-
-    // ----------------------------------------------------
-    // 3. BACKGROUND MUSIC (INDIAN RAGA MELODIC SYNTH via Web Audio API)
-    // ----------------------------------------------------
-    let isPlaying = false;
+    // 4. Ambient Web Audio Sitar / Raag Synth
     let audioCtx = null;
+    let isPlaying = false;
     let melodyInterval = null;
+    const ragaNotes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25];
 
-    // Harmonious Raag Bhupali Pentatonic Scale (Sa Re Ga Pa Dha)
-    const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
-
-    function playTone(freq, duration = 1.3) {
+    function playTone(freq, dur = 1.2) {
       if (!audioCtx) return;
       try {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
         gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        gain.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
 
         osc.connect(gain);
         gain.connect(audioCtx.destination);
-
         osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-      } catch (err) {
-        console.warn("Audio Context error:", err);
+        osc.stop(audioCtx.currentTime + dur);
+      } catch (e) {}
+    }
+
+    function startAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      if (!isPlaying) {
+        isPlaying = true;
+        let step = 0;
+        const seq = [0, 1, 2, 4, 3, 2, 4, 5, 4, 2, 1, 0];
+        melodyInterval = setInterval(() => {
+          playTone(ragaNotes[seq[step % seq.length]], 1.1);
+          if (step % 4 === 0) playTone(ragaNotes[0] / 2, 2.2);
+          step++;
+        }, 700);
+
+        document.getElementById('musicIcon').className = 'fa-solid fa-volume-high text-rosegold-300';
       }
     }
 
-    function startMelodyLoop() {
-      let step = 0;
-      const sequence = [0, 1, 2, 4, 3, 2, 4, 5, 4, 2, 1, 0];
-      melodyInterval = setInterval(() => {
-        const noteIdx = sequence[step % sequence.length];
-        playTone(notes[noteIdx], 1.2);
-        if (step % 4 === 0) {
-          playTone(notes[0] / 2, 2.4); // Subtle root drone
-        }
-        step++;
-      }, 650);
-    }
-
-    function stopMelodyLoop() {
-      if (melodyInterval) {
+    function stopAudio() {
+      if (isPlaying) {
         clearInterval(melodyInterval);
-        melodyInterval = null;
+        isPlaying = false;
+        document.getElementById('musicIcon').className = 'fa-solid fa-volume-xmark';
       }
     }
 
     function toggleAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-
-      const icon = document.getElementById('musicIcon');
-      const text = document.getElementById('musicText');
-
-      if (!isPlaying) {
-        isPlaying = true;
-        startMelodyLoop();
-        icon.className = 'fa-solid fa-music text-gold-600 animate-spin';
-        icon.style.animationDuration = '4s';
-        text.innerText = 'Music On';
-        showToast("Playing festive wedding melody", "fa-solid fa-music");
-      } else {
-        isPlaying = false;
-        stopMelodyLoop();
-        icon.className = 'fa-solid fa-volume-xmark';
-        icon.style.animation = 'none';
-        text.innerText = 'Music Off';
-      }
+      if (isPlaying) stopAudio();
+      else startAudio();
     }
 
-    // ----------------------------------------------------
-    // 4. TOAST NOTIFICATION UTILITY
-    // ----------------------------------------------------
-    let toastTimeout;
-    function showToast(message, iconClass = "fa-solid fa-circle-check") {
-      const toast = document.getElementById('toast');
-      const toastMessage = document.getElementById('toastMessage');
-      const toastIcon = document.getElementById('toastIcon');
-
-      toastMessage.innerText = message;
-      toastIcon.className = iconClass + " text-gold-600 text-xl";
-
-      toast.classList.remove('translate-y-[-150%]', 'opacity-0');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.add('translate-y-[-150%]', 'opacity-0');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 3500);
-    }
-
-    // ----------------------------------------------------
-    // 5. GOOGLE CALENDAR LINK GENERATOR (No Venue included)
-    // ----------------------------------------------------
-    function addToCalendar(title, startIso, endIso, details) {
-      const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-      const url = `${baseUrl}&text=${encodeURIComponent(title)}&dates=${startIso}/${endIso}&details=${encodeURIComponent(details)}`;
+    // 5. Calendar & Share Links
+    function addToCalendar(title, startIso, endIso, desc) {
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startIso}/${endIso}&details=${encodeURIComponent(desc)}`;
       window.open(url, '_blank');
     }
 
-    // ----------------------------------------------------
-    // 6. WHATSAPP & CLIPBOARD SHARING
-    // ----------------------------------------------------
     function shareOnWhatsApp() {
-      const text = "✨ The Bhagat Family cordially invites you to the wedding celebrations of Mohit and Pooja! ✨\n\n💍 Wedding Ceremony: 24th November 2026\n🥂 Reception: 27th November 2026\n\nPlease view our digital invitation card here: " + window.location.href;
+      const text = "✨ The Bhagat Family cordially invites you to the wedding of Mohit & Pooja! ✨\n\n💍 Vivah: 24th November 2026\n🥂 Reception: 27th November 2026\n\nView our wedding invitation: " + window.location.href;
       window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text), '_blank');
     }
 
@@ -726,51 +699,54 @@
       dummy.select();
       document.execCommand('copy');
       document.body.removeChild(dummy);
-      showToast("Invitation link copied to clipboard!", "fa-solid fa-link");
+      alert("Invitation link copied to clipboard!");
     }
 
-    // ----------------------------------------------------
-    // 7. CINEMATIC VIDEO CONTROLS
-    // ----------------------------------------------------
-    // 7. CINEMATIC VIDEO CONTROLS & SWITCHER
-    // ----------------------------------------------------
-    const coupleVideo = document.getElementById('coupleVideo');
-    const videoSrc = document.getElementById('videoSrc');
-    const videoTitleText = document.getElementById('videoTitleText');
-    const tab1 = document.getElementById('videoTab1');
-    const tab2 = document.getElementById('videoTab2');
+    // 6. Floating Rose Petals & Warm Bokeh Particles
+    const canvas = document.getElementById('petalsCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
 
-    function switchVideo(srcUrl, tabIndex) {
-      if (!coupleVideo || !videoSrc) return;
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
 
-      coupleVideo.pause();
-      videoSrc.src = srcUrl;
-      coupleVideo.load();
-      coupleVideo.play().catch(e => console.log("Autoplay paused by browser policy", e));
+    const petalColors = ['#F6D7DC', '#EABAC3', '#D694A2', '#F8E7DE', '#EED0C0'];
+    const petals = Array.from({ length: 28 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height - height,
+      size: Math.random() * 6 + 4,
+      speed: Math.random() * 1.5 + 0.8,
+      color: petalColors[Math.floor(Math.random() * petalColors.length)],
+      angle: Math.random() * Math.PI,
+      spin: Math.random() * 0.03 + 0.01
+    }));
 
-      if (tabIndex === 1) {
-        tab1.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-royal-900 text-white shadow-md border border-royal-900";
-        tab2.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-white text-royal-950 hover:bg-ivory-200 shadow-sm border border-gold-500/40";
-        videoTitleText.innerText = "Playing: Dance of Love";
-      } else {
-        tab2.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-royal-900 text-white shadow-md border border-royal-900";
-        tab1.className = "px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 bg-white text-royal-950 hover:bg-ivory-200 shadow-sm border border-gold-500/40";
-        videoTitleText.innerText = "Playing: Togetherness Moments";
-      }
+    function renderPetals() {
+      ctx.clearRect(0, 0, width, height);
+      petals.forEach(p => {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.6;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.size, p.size * 1.5, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        p.y += p.speed;
+        p.angle += p.spin;
+        if (p.y > height + 20) {
+          p.y = -20;
+          p.x = Math.random() * width;
+        }
+      });
+      requestAnimationFrame(renderPetals);
     }
-
-    function handleCustomVideoUpload(event) {
-      const file = event.target.files[0];
-      if (file && coupleVideo && videoSrc) {
-        const fileURL = URL.createObjectURL(file);
-        coupleVideo.pause();
-        videoSrc.src = fileURL;
-        coupleVideo.load();
-        coupleVideo.play().catch(e => console.log(e));
-        videoTitleText.innerText = "Playing: " + file.name;
-        showToast("Custom video loaded successfully!", "fa-solid fa-video");
-      }
-    }
+    renderPetals();
     </script>
 </body>
 </html>
